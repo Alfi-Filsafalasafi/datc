@@ -1,0 +1,37 @@
+html {
+    scroll-behavior: smooth;
+  }
+  
+.title{
+    font-size: 48px;
+}
+.desc-title{
+    font-size: 24px;
+}
+.license{
+    font-weight: 600;
+}
+.foto-pimpinan{
+    border: 2px solid #012a4a; 
+    border-radius: 10px;
+    max-height: 200px;
+}
+.garis-pembatas{
+    border: 1px solid #012a4a; 
+}
+.bg-real{
+    background: #012a4a;
+}
+.icon-jasa{
+    height: 64px;
+    width: 64px;
+}
+.bg-second{
+    background: #eff1f3;
+}
+.bg-footer{
+    background: #012a4a;
+
+}
+
+  
