@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\hubungiKami;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data = hubungiKami::orderBy('status', 'asc')
+        ->orderBy('created_at', 'desc')
+        ->get();
+        $total = hubungiKami::where('status',1)->count();
+        return view('admin.dashboard',['datas' => $data,'total' => $total]);
     }
+    public function dibaca($id){
+        $data = hubungiKami::findOrFail($id);
+        $data->status = 2;
+        $data->save();
+        return redirect()->route('home')
+                ->with('success',"pesan sudah dibaca");
+    }
+    
 }

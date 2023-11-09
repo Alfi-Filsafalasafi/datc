@@ -34,4 +34,15 @@ html {
 
 }
 
+.fixed-bottomk {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    
+}
+.portfolio {
+    max-height: 126px !important;
+    overflow-y: scroll !important;
+}
+
   

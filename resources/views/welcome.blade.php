@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
     <link rel="stylesheet" href="{{asset('css/style_carousel.css')}}">
+    <link rel="shortcut icon" href="{{asset('logo/logo-biru.png')}}" />
+
 
 	<title>Dwi Achmad Tax Consulting</title>
     <style>
@@ -34,6 +36,9 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-real">
         <div class="container">
             <a class="navbar-brand" href="#"><img src="{{asset('logo/logo.png')}}" width="48" alt="" srcset=""></a>
+            @if(auth()->check())
+                <a class="nav-link text-white" href="{{ route('home') }}">Dashboard Admin</a>
+            @endif
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -77,6 +82,26 @@
         </div>
       </div>
     </section>
+    @if(session()->has('success'))
+    <div class="container">
+        <div class="alert alert-success alert-dismissible fade show  mt-4" role="alert">
+            <strong>Berhasil Menyimpan!</strong> Terima kasih telah mengirim pesan kepada kami
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+    @endif
+    @if ($errors->any())
+    <div class="container">
+        <div class="alert alert-danger alert-dismissible fade show  mt-4" role="alert">
+            <strong>Gagal Menyimpan!</strong> Silahkan check kesalahan pada <a href="#footer">footer</a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+    @endif
     <section id="profile">
         <div class="container pt-5 pb-5">
             <h1 class="pt-5">DATC</h1>
@@ -342,36 +367,28 @@
 					<h1 class="heading-section mb-3 pb-md-2">ARTIKEL</h1>
 					<div class="col-md-12">
 						<div class="featured-carousel owl-carousel">
-							<div class="item">
-								<div class="blog-entry">
-									<img src="{{asset('img/bg-home.jpg')}}" alt="" height="128">
-		              				<div class="text border border-top-0 p-3">
-										<h5>Judul Artikel#1</h5>
-										<p style="font-size:12px">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-										<div class="d-flex align-items-center mt-2">
-											<p class="mb-0"><a href="#" class="btn btn-sm btn-warning">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
-										</div>
-		              				</div>
-		            			</div>
-							</div>
+							@forelse($artikels as $artikel)
                             <div class="item">
 								<div class="blog-entry">
-									<img src="{{asset('img/bg-home.jpg')}}" alt="" height="128">
+									<img src="{{asset('img/artikel/'.$artikel->img)}}" alt="" height="128">
 		              				<div class="text border border-top-0 p-3">
-										<h5>Judul Artikel</h5>
-										<p style="font-size:12px">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+										<h5>{{$artikel->judul}}</h5>
+										<p style="font-size:12px">{{$artikel->deskripsi}}</p>
 										<div class="d-flex align-items-center mt-2">
-											<p class="mb-0"><a href="#" class="btn btn-sm btn-warning">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+											<p class="mb-0 mr-2"><a href="{{$artikel->link}}" target="_blank" class="btn btn-sm btn-warning">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+                                            <span style="font-size:12px">{{ \Carbon\Carbon::parse($artikel->updated_at)->format('j M Y') }}</span>
 										</div>
 		              				</div>
 		            			</div>
 							</div>
+                            @empty
+                            @endforelse
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-    <div class="section bg-footer text-white py-5" id="footer">
+    <section class="bg-footer text-white py-5" id="footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-lg-4 my-3">
@@ -381,27 +398,42 @@
                 </div>
                 <div class="col-md-4 col-lg-3 my-3">
                     <h5 class="mb-3">Ikuti Kami</h5>
-                    <i class="fab fa-facebook fa-2x mr-3"></i>
-                    <i class="fab fa-instagram fa-2x mr-3"></i>
-                    <i class="fab fa-youtube fa-2x mr-3"></i>
+                    <a href="" class="text-white"><i class="fab fa-facebook fa-2x mr-3"></i></a>
+                    <a href="" class="text-white"><i class="fab fa-instagram fa-2x mr-3"></i></a>
+                    <a href="" class="text-white"><i class="fab fa-youtube fa-2x mr-3"></i></a>
                 </div>
                 <div class="col-md-12 col-lg-5 my-3">
                     <h5 class="mb-3">Hubungi Kami</h5>
-                    <form>
+                    <form action="{{route('hubungi_kami.store')}}" method="POST" id="hubungi_kami">
+                    @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nama" aria-describedby="emailHelp" placeholder="Masukkan nama" >
+                            <input type="text" name="nama" value="{{ old('nama') }}" class="form-control @error('nama') is-invalid @enderror" id="nama" aria-describedby="emailHelp" placeholder="Masukkan nama" >
+                            @error('nama')
+                                <small class="text-warning">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Masukkan email">
+                            <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" id="email" aria-describedby="emailHelp" placeholder="Masukkan email">
+                            @error('email')
+                                <small class="text-warning">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Tulis pesan Anda di sini..."></textarea>
+                            <textarea class="form-control @error('pesan') is-invalid @enderror" name="pesan" id="exampleFormControlTextarea1" rows="3" placeholder="Tulis pesan Anda di sini...">{{ old('pesan') }}</textarea>
+                            @error('pesan')
+                                <small class="text-warning">{{$message}}</small>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-sm btn-warning float-right">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
+    </section>
+    <div class="fixed-bottomk">
+        <button class="btn btn-warning rounded-circle py-3 px-3 floating">
+        <a href="https://wa.me/message/JZ72P5I6ZQIQB1" class="text-white" target="_blank"><i class="fas fa-headset" style="font-size:36px"></i></a>
+        </button>
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
