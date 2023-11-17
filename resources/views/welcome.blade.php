@@ -111,20 +111,24 @@
                     <img src="{{asset('img/person2.jpg')}}" class="img-fluid foto-pimpinan">
                 </div>
                 <div class="col-sm-9 col-md-10">
-                    <h5 class="mt-3 mt-sm-0">Achmad Zakki Nur, S.Pn, BKP, C.H, C.Ht</h5>
+                    <h5 class="mt-3 mt-sm-0">Achmad Zakki Nur, S.Pn., M.Ak., BKP., C.H., C.Ht.</h5>
                     <div class="row">
                         <div class="col">
                         <b>Riwayat Pendidikan</b>
                             <ul>
-                                <li>Master’s degree in Tax Policy and Administration from University of Indonesia, 2000;</li>
-                                <li>Master’s degree in Tax Policy and Administration from University of Indonesia, 2000;</li>
+                                <li>S1 – Perpajakan (Fakultas Ilmu Administrasi Universitas Brawijaya) </li>
+                                <li>S2 – Magister Akuntansi (Fakultas Pascasarjana Universitas Gajayana Malang)</li>
                             </ul>
                         </div>
                         <div class="col">
                         <b>Riwayat Pekerjaan</b>
                             <ul>
-                                <li>Master’s degree in Tax Policy and Administration from University of Indonesia, 2000;</li>
-                                <li>Master’s degree in Tax Policy and Administration from University of Indonesia, 2000;</li>
+                                <li>Owner Dwi Achmad Tax Consulting (2021-Sekarang)</li>
+                                <li>Dosen Luar Program Vokasi Universitas Brawijaya (2022-Sekarang)</li>
+                                <li>Instruktur Brevet Perpajakan (di Cipta Sarana Cendikia, DATC, IKPI)</li>
+                                <li>Dosen LP3I Ngawi (2020-2021)</li>
+                                <li>Kantor Akuntan Publik Thoufan dan Rosyid (2016-2022)</li>
+                                <li>PT Semen Indonesia (Persero) Tbk (Magang)</li>
                             </ul>
                         </div>
                     </div>
@@ -375,7 +379,11 @@
 										<h5>{{$artikel->judul}}</h5>
 										<p style="font-size:12px">{{$artikel->deskripsi}}</p>
 										<div class="d-flex align-items-center mt-2">
+                                            @if(trim($artikel->isi) == '' || $artikel->isi === null)
 											<p class="mb-0 mr-2"><a href="{{$artikel->link}}" target="_blank" class="btn btn-sm btn-warning">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+											@else
+                                            <p class="mb-0 mr-2"><a href="{{route('detail_artikel', ['id' => $artikel->id])}}" class="btn btn-sm btn-warning">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+                                            @endif
                                             <span style="font-size:12px">{{ \Carbon\Carbon::parse($artikel->updated_at)->format('j M Y') }}</span>
 										</div>
 		              				</div>

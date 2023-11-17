@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="{{asset('admin/css/vertical-layout-light/style.css')}}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{asset('logo/logo-biru.png')}}" />
+  @yield('link_css')
 </head>
 <body>
   <div class="container-scroller">
@@ -69,10 +70,16 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
+          <li class="nav-item @yield('artikel_pribadi')">
+            <a class="nav-link" href="{{route('artikel_pribadi.index')}}">
+              <i class="icon-paper menu-icon"></i>
+              <span class="menu-title">Artikel Pribadi</span>
+            </a>
+          </li>
           <li class="nav-item @yield('artikel')">
             <a class="nav-link" href="{{route('artikel.index')}}">
               <i class="icon-paper menu-icon"></i>
-              <span class="menu-title">Artikel</span>
+              <span class="menu-title">Artikel Website Online</span>
             </a>
           </li>
         </ul>

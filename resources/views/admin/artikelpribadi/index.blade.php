@@ -1,13 +1,13 @@
 @extends('layouts.master')
-@section('title', 'Artikel')
-@section('artikel', 'active')
+@section('title', 'Artikel Pribadi')
+@section('artikel_pribadi', 'active')
 @section('content')
 <div class="content-wrapper">
           <div class="row">
             <div class="col-md-12 grid-margin">
               <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold">Artikel dari Website</h3>
+                  <h3 class="font-weight-bold">Artikel Pribadi</h3>
                   <h6 class="font-weight-normal mb-0">Berikut Artikel yang Anda miliki, Anda bisa melihatnya di <span class="text-primary"> <a href="{{url('/')}}">Landing Page</a></span></h6>
                 </div>
               </div>
@@ -29,13 +29,13 @@
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <a href="{{route('artikel.create')}}" class="btn btn-sm btn-success btn-icon-text"><i class="ti-plus btn-icon-prepend"></i>Tambah</a>
+                  <a href="{{route('artikel_pribadi.create')}}" class="btn btn-sm btn-success btn-icon-text"><i class="ti-plus btn-icon-prepend"></i>Tambah</a>
                   <div class="table-responsive">
                     <table class="table table-striped table-borderless">
                       <thead>
                         <tr>
                           <th>#</th>
-                          <th>URL</th>
+                          <th>Detail</th>
                           <th>Foto</th>
                           <th>Judul</th>
                           <th>Deskripsi</th>
@@ -48,16 +48,16 @@
                             <form method="POST" action="{{ route('artikel.delete', $data->id) }}">
                                 @csrf
                                 <input name="_method" type="hidden" value="DELETE">
-                                <a href="{{ route('artikel.edit', ['id' => $data->id]) }}" class="btn btn-warning btn-rounded btn-icon" style="padding-top:12px">
+                                <a href="{{ route('artikel_pribadi.edit', ['id' => $data->id]) }}" class="btn btn-warning btn-rounded btn-icon" style="padding-top:12px">
                                   <i class="ti-marker-alt"></i>
                                 </a>
-                                <a href="{{ route('artikel.delete', ['id' => $data->id]) }}" class="btn btn-danger btn-rounded btn-icon show_confirm" style="padding-top:12px">
+                                <a href="{{ route('artikel_pribadi.delete', ['id' => $data->id]) }}" class="btn btn-danger btn-rounded btn-icon show_confirm" style="padding-top:12px">
                                   <i class="ti-trash"></i>
                                 </a>
                             </form>
                           </td>
                           <td>
-                            <a href="{{$data->link}}" target="_blank">lihat</a>
+                            <a href="{{route('detail_artikel', ['id' => $data->id])}}" target="_blank">lihat</a>
                           </td>
                           <td>
                             <img src="{{ asset('img/artikel/' . $data->img)}}" class="img rounded-0" style="width:128px;height:64px" alt="" srcset="">
