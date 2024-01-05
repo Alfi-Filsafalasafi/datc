@@ -26,6 +26,11 @@ html {
     height: 64px;
     width: 64px;
 }
+.icon-peraturan{
+    padding: 10px;
+    height: 108px;
+    width: 108px;
+}
 .bg-second{
     background: #eff1f3;
 }
@@ -45,4 +50,12 @@ html {
     overflow-y: scroll !important;
 }
 
-  
+.br-lg {
+    display: none;
+}
+@media (min-width: 1200px) {
+    /* Menunjukkan <br> pada layar besar (lg) */
+    .br-lg {
+        display: inline;
+    }
+}

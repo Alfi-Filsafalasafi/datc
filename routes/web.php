@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ArtikelPribadiController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DetailArtikelController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\LinktreeController;
 use App\Http\Controllers\Auth\LoginController;
@@ -28,7 +29,7 @@ Route::post('/login/admin/tim/datc', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/detail/artikel/{id}', [HomeController::class, 'detail_artikel'])->name('detail_artikel');
+Route::get('/detail/artikel/{id}', [DetailArtikelController::class, 'detail_artikel'])->name('detail_artikel');
 Route::get('/dibaca/{id}', [HomeController::class, 'dibaca'])->name('dibaca');
 
 Route::get('/artikelwebsite', [ArtikelController::class,'index'])->name('artikel.index');
