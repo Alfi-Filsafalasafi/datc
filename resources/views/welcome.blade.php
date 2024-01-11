@@ -83,7 +83,7 @@
                     <span class="desc-title">Tax Consultans, Financial Advisory, Management Consultans, and Tax
                         Academy</span> <br>
                     <h5 class="license mt-2">License Number : KEP-4253/IP.A/PJ/2018</h5>
-                    <h5 class="license pb-5">License Number : KEP-4887/IP.A/PJ/2019</h5>
+                    <h5 class="license pb-5">License Number : KP-8882/IP.B/2022</h5>
                 </div>
             </div>
         </div>
@@ -157,8 +157,6 @@
                             <b>Riwayat Pekerjaan</b>
                             <ul>
                                 <li>Magang Kantor Akuntan Publik Dbsd&A, Malang (Juli - Desember 2014)
-                                </li>
-                                <li>Kantor Konsultan Pajak Wendi Nurdyanto, Malang (Tax Officer) (2016 - 2018)
                                 </li>
                                 <li>Kantor Konsultan Pajak Dwi Atmojo (2018 - Sekarang)</li>
                                 <li>Dwi Achmad Tax Consulting (2021 - Sekarang)</li>
@@ -523,7 +521,7 @@
                                 Balearjosari Residence B-14, <span class="br-lg"><br></span> Kota Malang</td>
                         </tr>
                         <tr>
-                            <td>Domisili</td>
+                            <td style="vertical-align: top;white-space: nowrap;">Domisili</td>
                             <td style="vertical-align: top; width:20px;" align="center">:</td>
                             <td>Jl. Candi Sari, II, 12, Mojolangu, Lowokwaru, <span class="br-lg"><br></span> Kota
                                 Malang</td>

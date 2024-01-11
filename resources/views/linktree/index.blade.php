@@ -31,13 +31,13 @@
                         <img src="{{ asset('logo/logo-biru.png') }}" class="text-center" height="64" alt=""
                             srcset="">
                         <h5 class="mt-3">DATC</h5>
-                        <p>Dwi Achmad Tax Consultant Company Profile</p>
+                        <p>Dwi Achmad Tax Consultant</p>
                         <hr>
                         {{-- <a href="#" class="btn btn-outline-primary w-100 mt-4 py-3">
                         <i class="fab fa-facebook"></i>
                         <span class="ml-2">Facebook</span>
                     </a> --}}
-                        <a href="https://wa.me/6285735741517" class="btn btn-outline-success w-100 mt-4 py-3">
+                        <a href="https://wa.me/6282233472138" class="btn btn-outline-success w-100 mt-4 py-3">
                             <i class="fab fa-whatsapp"></i>
                             <span class="ml-2">Whatsapp</span>
                         </a>
